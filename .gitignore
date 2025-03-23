@@ -1,2 +1,7 @@
 .venv
 Data
+train_addition.zip
+accuracy_unfrozen_hard-silu.png
+best_model.keras
+Unfrozen_hard-silu.png
+requirements.txt
