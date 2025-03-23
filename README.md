@@ -1,86 +1,86 @@
-# Fruit and Vegetable Image Recognition
+# Rozpoznávání ovoce a zeleniny na obrázcích
 
-## Overview
+## Přehled
 
-This project focuses on building a model to classify images of fruits and vegetables. The project uses a dataset of images of 36 different types of fruits and vegetables. The goal is to build a model that can accurately classify these images.
+Tento projekt se zaměřuje na vytvoření modelu pro klasifikaci obrázků ovoce a zeleniny. Projekt využívá datovou sadu s obrázky 36 různých druhů ovoce a zeleniny. Cílem je vytvořit model, který dokáže tyto obrázky přesně klasifikovat.
 
-## What the Project Does
+## Co projekt dělá
 
-This project develops and trains a machine learning model capable of identifying 36 different types of fruits and vegetables from images. It utilizes deep learning techniques, specifically Convolutional Neural Networks (CNNs), to extract features from images and make accurate predictions.
+Tento projekt vyvíjí a trénuje model strojového učení, který je schopen identifikovat 36 různých druhů ovoce a zeleniny z obrázků. Využívá techniky hlubokého učení, konkrétně konvoluční neuronové sítě (CNN), k extrakci rysů z obrázků a k přesným předpovědím.
 
-## Why the Project is Useful
+## Proč je projekt užitečný
 
-This project has several practical applications:
+Tento projekt má několik praktických aplikací:
 
-- **Automated Grocery Checkout:** The model can be integrated into self-checkout systems to automatically identify fruits and vegetables, speeding up the checkout process.
-- **Inventory Management:** Retailers can use the model to track inventory levels of fruits and vegetables by automatically analyzing images of shelves.
-- **Dietary Tracking:** The model can be incorporated into apps that help users track their food intake and nutritional information.
-- **Agricultural Applications:** Farmers can use the model to identify diseases or pests in crops based on image analysis.
-- **Educational Tool:** The project serves as an educational tool for learning about deep learning and image classification.
+- **Automatické pokladny v obchodech s potravinami:** Model lze integrovat do samoobslužných pokladen, aby automaticky identifikoval ovoce a zeleninu a urychlil tak proces placení.
+- **Správa zásob:** Obchodníci mohou model využít ke sledování úrovně zásob ovoce a zeleniny automatickou analýzou obrázků regálů.
+- **Sledování stravy:** Model lze začlenit do aplikací, které pomáhají uživatelům sledovat jejich příjem potravy a nutriční informace.
+- **Zemědělské aplikace:** Zemědělci mohou model využít k identifikaci chorob nebo škůdců na plodinách na základě analýzy obrazu.
+- **Vzdělávací nástroj:** Projekt slouží jako vzdělávací nástroj pro učení o hlubokém učení a klasifikaci obrazu.
 
-## How to Get Started
+## Jak začít
 
-1. **Clone the repository:** `git clone [repository URL]`
-2. **Install dependencies:** `pip install -r requirements.txt`
-3. **Download the dataset:** Configure the data loading path in the code to point to the location of the fruit and vegetable image dataset.
-4. **Run the code:** Execute the Jupyter Notebook or Python scripts to train and evaluate the model.
+1. **Naklonujte úložiště:** `git clone [URL úložiště]`
+2. **Nainstalujte závislosti:** `pip install -r requirements.txt`
+3. **Stáhněte si datovou sadu:** Nakonfigurujte cestu k načítání dat v kódu tak, aby ukazovala na umístění datové sady s obrázky ovoce a zeleniny.
+4. **Spusťte kód:** Spusťte Jupyter Notebook nebo Python skripty pro trénování a vyhodnocení modelu.
 
-## Getting Help
+## Získání nápovědy
 
-If you encounter any issues or have questions, please refer to the project's documentation or open an issue on the GitHub repository. The community and maintainers will be happy to assist you.
+Pokud narazíte na nějaké problémy nebo máte dotazy, podívejte se do dokumentace projektu nebo otevřete problém v úložišti GitHub. Komunita a správci vám rádi pomohou.
 
-## Maintainers and Contributors
+## Správci a přispěvatelé
 
-This project is maintained by [your name] and is open to contributions from the community. If you'd like to contribute, please feel free to fork the repository and submit a pull request.
+Tento projekt spravuje [vaše jméno] a je otevřený příspěvkům od komunity. Pokud chcete přispět, neváhejte rozvětvit úložiště a odeslat žádost o pull request.
 
 
-## Tools Used
+## Použité nástroje
 
-- **Python:** The primary programming language used for this project.
-- **Google Colab:** A cloud-based platform for running Python code, used for model training and analysis.
-- **TensorFlow/Keras:** Deep learning libraries used for building and training the model.
-- **PyTorch:** A deep learning framework used for heatmap generation.
-- **OpenCV (cv2):** A library for computer vision tasks, used for image preprocessing.
-- **NumPy:** A library for numerical computations.
-- **Pandas:** A library for data manipulation and analysis.
-- **Scikit-learn:** A library for machine learning tasks, used for model evaluation.
-- **Matplotlib:** A library for creating visualizations.
-- **PIL (Pillow):** A library for image handling.
-- **KaggleHub:** Used to download and manage datasets.
+- **Python:** Hlavní programovací jazyk použitý pro tento projekt.
+- **Google Colab:** Cloudová platforma pro spouštění kódu Python, použitá pro trénování a analýzu modelu.
+- **TensorFlow/Keras:** Knihovny hlubokého učení použité pro vytváření a trénování modelu.
+- **PyTorch:** Framework hlubokého učení použitý pro generování heatmap.
+- **OpenCV (cv2):** Knihovna pro úkoly počítačového vidění, použitá pro předzpracování obrazu.
+- **NumPy:** Knihovna pro numerické výpočty.
+- **Pandas:** Knihovna pro manipulaci a analýzu dat.
+- **Scikit-learn:** Knihovna pro úkoly strojového učení, použitá pro vyhodnocení modelu.
+- **Matplotlib:** Knihovna pro vytváření vizualizací.
+- **PIL (Pillow):** Knihovna pro zpracování obrazu.
+- **KaggleHub:** Používá se ke stahování a správě datových sad.
 
-## Analysis Conducted
+## Provedená analýza
 
-1. **Data Loading and Preprocessing:**
-    - Images of fruits and vegetables were loaded from the dataset.
-    - Images were resized and normalized to prepare them for the model.
-    - Labels were numerically encoded for use in the model.
+1. **Načtení a předzpracování dat:**
+    - Obrázky ovoce a zeleniny byly načteny z datové sady.
+    - Obrázky byly změněny a normalizovány, aby byly připraveny pro model.
+    - Štítky byly numericky zakódovány pro použití v modelu.
 
-2. **Model Building:**
-    - Two models were built and compared:
-        - A custom CNN model inspired by VGG16.
-        - Transfer learning with MobileNetV3 large.
-    - The Keras library was used for model creation and training.
+2. **Vytvoření modelu:**
+    - Byly vytvořeny a porovnány dva modely:
+        - Vlastní model CNN inspirovaný VGG16.
+        - Transfer learning s MobileNetV3 large.
+    - Knihovna Keras byla použita pro vytvoření a trénování modelu.
 
-3. **Model Training and Evaluation:**
-    - The models were trained on the training data and evaluated on the validation data.
-    - Performance metrics such as accuracy, loss, precision, recall, and F1-score were used to assess the model's performance.
-    - Confusion matrices and classification reports were generated to identify specific areas where the model performed well and areas needing improvement.
+3. **Trénování a vyhodnocení modelu:**
+    - Modely byly trénovány na trénovacích datech a vyhodnoceny na validačních datech.
+    - K posouzení výkonu modelu byly použity metriky výkonu, jako je přesnost, ztráta, precision, recall a F1-skóre.
+    - Byly generovány matice záměn a klasifikační reporty pro identifikaci specifických oblastí, kde model fungoval dobře, a oblastí, které je třeba zlepšit.
 
-4. **Heatmap Generation:**
-    - VGG16 was utilized to generate activation heatmaps for incorrect predictions. 
-    - This visualization technique helps in identifying areas of the image that the model focuses on for classification, improving model interpretability and identifying potential areas for improvement.
+4. **Generování heatmap:**
+    - VGG16 byl použit k generování aktivačních heatmap pro nesprávné předpovědi. 
+    - Tato vizualizační technika pomáhá identifikovat oblasti obrazu, na které se model zaměřuje při klasifikaci, zlepšuje interpretovatelnost modelu a identifikuje potenciální oblasti pro zlepšení.
 
-## Insights
+## Poznatky
 
-- The project demonstrated the successful application of convolutional neural networks for image classification.
-- Both the custom model and transfer learning with MobileNetV3 achieved reasonable accuracy in classifying fruit and vegetable images.
-- Specific challenges and areas for improvement were identified through confusion matrices and classification reports.
-- Fine-tuning model architecture, exploring additional data augmentation techniques, and testing with larger and more diverse datasets can further improve model accuracy and generalization.
-- Heatmaps provided insights into the model's decision-making process, revealing which areas of the image influence the classification results.
+- Projekt demonstroval úspěšné použití konvolučních neuronových sítí pro klasifikaci obrazu.
+- Vlastní model i transfer learning s MobileNetV3 dosáhly rozumné přesnosti v klasifikaci obrázků ovoce a zeleniny.
+- Specifické výzvy a oblasti pro zlepšení byly identifikovány prostřednictvím matic záměn a klasifikačních reportů.
+- Jemné doladění architektury modelu, prozkoumání dalších technik augmentace dat a testování s většími a rozmanitějšími datovými sadami může dále zlepšit přesnost a generalizaci modelu.
+- Heatmapy poskytly vhled do procesu rozhodování modelu a odhalily, které oblasti obrazu ovlivňují výsledky klasifikace.
 
-## Future Work
+## Budoucí práce
 
-- Fine-tuning the model's hyperparameters to further improve its performance.
-- Exploring the application of different architectures or optimization algorithms.
-- Increasing the size and diversity of the dataset to improve the model's generalization capabilities.
-- Developing a web application that utilizes the model for real-time fruit and vegetable classification.
+- Jemné doladění hyperparametrů modelu pro další zlepšení jeho výkonu.
+- Prozkoumání použití jiných architektur nebo optimalizačních algoritmů.
+- Zvýšení velikosti a rozmanitosti datové sady pro zlepšení generalizačních schopností modelu.
+- Vývoj webové aplikace, která využívá model pro klasifikaci ovoce a zeleniny v reálném čase.
