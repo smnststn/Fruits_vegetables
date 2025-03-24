@@ -17,16 +17,12 @@ Tento projekt slouží k výuce o hlubokém učení a klasifikaci obrázků. Jeh
 - **Správa zásob:** Obchodníci mohou model využít ke sledování úrovně zásob ovoce a zeleniny automatickou analýzou obrázků regálů.
 - **Sledování stravy:** Model lze začlenit do aplikací, které pomáhají uživatelům sledovat jejich příjem potravy a nutriční informace.
 
-## Jak začít
+## Jak spustit projekt u sebe
 
 1. **Naklonujte úložiště:** `git clone https://github.com/smnststn/Fruits_vegetables.git`
 2. **Nainstalujte závislosti:** `pip install -r requirements.txt`
 3. **Stáhněte si datovou sadu:** Upravte cestu k načítání dat v kódu tak, aby směřovala na umístění datové sady obsahující obrázky ovoce a zeleniny. Pokud chcete rozšířit trénovací dataset, načtěte soubor `train_addition.zip` a nastavte parametr `additional = True`.
 4. **Spusťte kód:** Spusťte Jupyter Notebook nebo Python skripty pro trénování a vyhodnocení modelu.
-
-## Získání nápovědy
-
-Pokud narazíte na nějaké problémy nebo máte dotazy, podívejte se do dokumentace projektu nebo otevřete problém v úložišti GitHub. Komunita a správci vám rádi pomohou.
 
 ## Použité nástroje
 
@@ -60,7 +56,7 @@ Pokud narazíte na nějaké problémy nebo máte dotazy, podívejte se do dokume
     - K posouzení výkonu modelu byly použity metriky výkonu, jako je přesnost, ztráta, precision, recall a F1-skóre.
     - Byly generovány matice záměn a klasifikační reporty pro identifikaci specifických oblastí, kde model fungoval dobře, a oblastí, které je třeba zlepšit.
 
-## Poznatky
+## Závěr
 
 - Projekt demonstroval úspěšné použití konvolučních neuronových sítí pro klasifikaci obrazu.
 - Vlastní model i transfer learning s MobileNetV3 large & VGG16 dosáhly rozumné přesnosti v klasifikaci obrázků ovoce a zeleniny.
@@ -68,7 +64,7 @@ Pokud narazíte na nějaké problémy nebo máte dotazy, podívejte se do dokume
 - Jemné doladění architektury modelu, prozkoumání dalších technik augmentace dat a testování s většími a rozmanitějšími datovými sadami může dále zlepšit přesnost a generalizaci modelu.
 - Heatmapy poskytly vhled do procesu rozhodování modelu a odhalily, které oblasti obrazu ovlivňují výsledky klasifikace.
 
-## Budoucí práce
+## Možnosti další práce
 
 - Jemné doladění hyperparametrů modelu pro další zlepšení jeho výkonu.
 - Prozkoumání použití jiných architektur nebo optimalizačních algoritmů.
