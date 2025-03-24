@@ -11,7 +11,7 @@ Tento projekt vyvíjí a trénuje model strojového učení, který je schopen i
 
 ## Proč je projekt užitečný
 
-Tento projekt slouží k výuce o hlubokém učení a klasifikaci obrázků. Jeho rozšíření však může najít uplatnění v několika praktických oblastech:
+Tento projekt pro nás sloužil k vyskoušení hlubokévo učení na klasifikaci obrázků (multiclass single-label). Jeho rozšíření však může najít uplatnění v několika praktických oblastech:
 
 - **Automatické pokladny v obchodech s potravinami:** Model lze integrovat do samoobslužných pokladen, aby automaticky identifikoval ovoce a zeleninu a urychlil tak proces placení.
 - **Správa zásob:** Obchodníci mohou model využít ke sledování úrovně zásob ovoce a zeleniny automatickou analýzou obrázků regálů.
