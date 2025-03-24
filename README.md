@@ -21,7 +21,7 @@ Tento projekt slouží k výuce o hlubokém učení a klasifikaci obrázků. Jeh
 
 1. **Naklonujte úložiště:** `git clone https://github.com/smnststn/Fruits_vegetables.git`
 2. **Nainstalujte závislosti:** `pip install -r requirements.txt`
-3. **Stáhněte si datovou sadu:** Nakonfigurujte cestu k načítání dat v kódu tak, aby ukazovala na umístění datové sady s obrázky ovoce a zeleniny.
+3. **Stáhněte si datovou sadu:** Upravte cestu k načítání dat v kódu tak, aby směřovala na umístění datové sady obsahující obrázky ovoce a zeleniny. Pokud chcete rozšířit trénovací dataset, načtěte soubor `train_addition.zip` a nastavte parametr `additional = True`.
 4. **Spusťte kód:** Spusťte Jupyter Notebook nebo Python skripty pro trénování a vyhodnocení modelu.
 
 ## Získání nápovědy
