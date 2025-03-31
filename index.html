@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rozpoznávání ovoce a zeleniny</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            text-align: center;
+            margin: 20px;
+        }
+        #imagePreview {
+            max-width: 100%;
+            height: auto;
+            display: none;
+        }
+        #loading {
+            display: none;
+            margin-top: 20px;
+        }
+        .result {
+            font-size: 1.5em;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🍎🥦 Rozpoznávání ovoce a zeleniny</h1>
+        <p>Vyberte obrázek nebo vložte URL pro identifikaci ovoce nebo zeleniny.</p>
+
+        <!-- Input for uploading file or URL -->
+        <div>
+            <input type="file" id="fileInput" accept="image/*" onchange="previewImage()">
+            <br><br>
+            <input type="text" id="imageUrl" placeholder="Vložte URL obrázku" oninput="previewUrl()">
+            <br><br>
+            <button onclick="uploadImage()">Předpovědět</button>
+        </div>
+
+        <!-- Image Preview and Details -->
+        <div id="imageDetails" style="display: none; text-align: left; margin-top: 20px;">
+            <h3>Detaily obrázku</h3>
+            <img id="imagePreview" src="" alt="Uploaded Image">
+            <p id="imageInfo"></p>
+            <p id="checkmark" style="font-size: 20px; color: green; display: none;">✔</p>
+        </div>
+
+        <!-- Loading state -->
+        <div id="loading">
+            <p>Probíhá odesílání požadavku na server...</p>
+        </div>
+
+        <!-- Prediction result -->
+        <div id="result" class="result" style="display: none;"></div>
+        <div id="error" class="error" style="display: none;"></div>
+    </div>
+
+    <script>
+        // Preview uploaded image and show details
+        function previewImage() {
+            let fileInput = document.getElementById('fileInput').files[0];
+            let imageDetails = document.getElementById('imageDetails');
+            let imagePreview = document.getElementById('imagePreview');
+            let imageInfo = document.getElementById('imageInfo');
+            let checkmark = document.getElementById('checkmark');
+            let errorDiv = document.getElementById('error');
+            
+            if (fileInput) {
+                errorDiv.style.display = 'none';  // Hide previous error if any
+                
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block'; // Show the image
+                    imageDetails.style.display = 'block'; // Show image details
+
+                    // Display image details
+                    let img = new Image();
+                    img.onload = function() {
+                        imageInfo.innerHTML = `Šířka: ${img.width}px, Výška: ${img.height}px, Formát: ${fileInput.type}, Velikost: ${(fileInput.size / 1024).toFixed(2)} KB`;
+                    };
+                    img.src = e.target.result;
+
+                    checkmark.style.display = 'block';  // Show checkmark
+                };
+                reader.readAsDataURL(fileInput);
+            }
+        }
+
+        // Preview URL image and show details
+        function previewUrl() {
+            let imageUrl = document.getElementById("imageUrl").value;
+            let imageDetails = document.getElementById('imageDetails');
+            let imagePreview = document.getElementById('imagePreview');
+            let imageInfo = document.getElementById('imageInfo');
+            let checkmark = document.getElementById('checkmark');
+            let errorDiv = document.getElementById('error');
+
+            if (imageUrl) {
+                errorDiv.style.display = 'none';  // Hide previous error if any
+
+                // Validate URL format
+                let img = new Image();
+                img.onload = function() {
+                    imagePreview.src = imageUrl;
+                    imagePreview.style.display = 'block'; // Show the image
+                    imageDetails.style.display = 'block'; // Show image details
+
+                    // Display image details
+                    imageInfo.innerHTML = `Formát: ${img.src.split('.').pop()}, URL: ${imageUrl}`;
+
+                    checkmark.style.display = 'block';  // Show checkmark
+                };
+                img.onerror = function() {
+                    errorDiv.style.display = 'block';  // Show error for invalid URL
+                    errorDiv.innerText = "Chyba: Neplatná URL.";
+                };
+                img.src = imageUrl;
+            }
+        }
+
+        // Send image to Flask server for prediction
+        async function uploadImage() {
+            let fileInput = document.getElementById('fileInput').files[0];  // Získání souboru
+            let imageUrl = document.getElementById("imageUrl").value;       // Získání URL
+            let formData = new FormData();  // Vytvoření FormData objektu
+            let loadingDiv = document.getElementById('loading');
+            let resultDiv = document.getElementById('result');
+            let errorDiv = document.getElementById('error');
+
+            resultDiv.style.display = 'none';  // Hide previous result
+            errorDiv.style.display = 'none';   // Hide previous error
+            loadingDiv.style.display = 'block';  // Show loading state
+
+            if (fileInput) {
+                formData.append("file", fileInput);  // Přidání souboru
+            } else if (imageUrl) {
+                formData.append("url", imageUrl);  // Přidání URL obrázku
+            } else {
+                alert("Prosím, nahrajte obrázek nebo vložte URL.");
+                loadingDiv.style.display = 'none';
+                return;
+            }
+
+            // Odeslání požadavku na server Flask
+            try {
+                let response = await fetch("/predict", {
+                    method: "POST",
+                    body: formData
+                });
+
+                let result = await response.json();  // Získání odpovědi ve formátu JSON
+
+                loadingDiv.style.display = 'none';  // Hide loading state
+
+                if (result.prediction) {
+                    resultDiv.style.display = 'block';
+                    resultDiv.innerHTML = `Předpověď: <strong>${result.prediction}</strong>`;
+                } else {
+                    errorDiv.style.display = 'block';
+                    errorDiv.innerText = "Chyba při zpracování obrázku.";
+                }
+            } catch (error) {
+                loadingDiv.style.display = 'none';  // Hide loading state
+                errorDiv.style.display = 'block';
+                errorDiv.innerText = "Chyba při odesílání požadavku na server.";
+            }
+        }
+    </script>
+</body>
+</html>
