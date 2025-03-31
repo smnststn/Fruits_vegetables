@@ -62,7 +62,9 @@ Tento projekt pro nás sloužil k vyskoušení hlubokévo učení na klasifikaci
 - Vlastní model i transfer learning s MobileNetV3 large & VGG16 dosáhly rozumné přesnosti v klasifikaci obrázků ovoce a zeleniny.
 - Specifické výzvy a oblasti pro zlepšení byly identifikovány prostřednictvím matic záměn a klasifikačních reportů.
 - Jemné doladění architektury modelu, prozkoumání dalších technik augmentace dat a testování s většími a rozmanitějšími datovými sadami může dále zlepšit přesnost a generalizaci modelu.
-- Nejlepší model naleznete v ve větve `nejlepsi_model` (https://github.com/smnststn/Fruits_vegetables/tree/nejlepsi_model).
+- Nejlepší model naleznete ve větve `nejlepsi_model` (https://github.com/smnststn/Fruits_vegetables/tree/nejlepsi_model) a je ním:
+-- MobileNetV3Large s využitím funkce `crop`, s rozšířením o `additional` dataset, s aktivační funkcí `gelu`.
+
 
 ## Možnosti další práce
 
